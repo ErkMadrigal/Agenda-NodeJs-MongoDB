@@ -1,0 +1,37 @@
+<%- include ('partials/_header.ejs') -%>
+<div class="container mt-4">
+    <div class="row">
+        <!-- card Form -->
+        <div class="col-md-5 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/update/<%= data._id %>" method="POST">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Nombre</label>
+                            <input type="text" class="form-control" name="name" value="<%= data.name %>" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput2">Apellidos</label>
+                            <input type="text" class="form-control" name="lastName" value="<%= data.lastName %>" placeholder="Apellidos">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea4">Descripcion</label>
+                            <textarea class="form-control" name="description" rows="3"><%= data.description %></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput2">Numero</label>
+                            <input type="number" class="form-control" name="number" value="<%= data.number %>" placeholder="Numero">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput3">Email</label>
+                            <input type="email" class="form-control" name="email" value="<%= data.email %>" placeholder="Email">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end card form -->
+    </div>
+</div>
+<%- include ('partials/_footer.ejs') -%>

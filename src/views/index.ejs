@@ -3,7 +3,7 @@
     <div class="row">
         <!-- card Form -->
         <div class="col-md-5">
-            <div class="card">
+            <div class="card mb-5">
                 <div class="card-body">
                     <form action="/add" method="POST">
                         <div class="form-group">
@@ -37,15 +37,27 @@
             <% let cont = 1 %>
             <% data.forEach( (usr) => { %>
                 <div class="card mb-5">
-                    <h5 class="card-header"><%= cont ++ %> <%= usr.name %></h5>
+                    <h5 class="card-header p-3 mb-2 <%= usr.status ? 'bg-warning text-dark' : 'bg-primary text-white'  %>"> 
+                        <i class="mr-3 <%= usr.status ?  'fas fa-star' : 'fas fa-calendar-week' %>"></i>
+                        <%= cont ++ %> <%= usr.name %>
+                    </h5>
                     <div class="card-body">
-                      <h2 class="card-title"><%= usr.name %> <%= usr.lastName %></h2>
-                      <p class="card-text"><%= usr.description %></p>
-                      <p class="card-text"><%= usr.number %></p>
-                      <p class="card-text"><%= usr.email %></p>
-                      <a href="#" class="btn btn-primary">Editar</a>
-                      <a href="#" class="btn btn-danger">Borrar</a>
-                      <a href="#" class="btn btn-warning">Favoritos</a>
+                        <h2 class="card-title mb-4"><b><%= usr.name %> <%= usr.lastName %></b></h2>
+                        <h5 class="card-text mb-4">
+                            <label for=""><i class="mr-2 fas fa-book"></i> Descripcion: </label> 
+                            <b><%= usr.description %></b>
+                        </h4>
+                        <h5 class="card-text mb-4">
+                            <label for=""><i class="mr-2 fas fa-phone"></i> Numero: </label> 
+                            <b><%= usr.number %></b>
+                        </h4>
+                        <h5 class="card-text mb-4">
+                            <label for=""><i class="mr-2 fas fa-at"></i> Correo Electronico: </label> 
+                            <b><%= usr.email %></b>
+                        </h4>
+                        <a href="/update/<%= usr._id %>" class="btn btn-primary"><i class="fas fa-edit fa-2x ml-3 mr-3"></i></a>
+                        <a href="/delete/<%= usr._id %>" class="btn btn-danger"><i class="fas fa-trash-alt fa-2x ml-3 mr-3"></i></a>
+                        <a href="/favorites/<%= usr._id %>" class="btn btn-warning"><i class="fas fa-star fa-2x ml-3 mr-3"></i></a>
                     </div>
                 </div>
            <% }) %>

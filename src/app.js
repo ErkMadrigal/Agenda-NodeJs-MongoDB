@@ -17,7 +17,7 @@ const routes = require('./routes/index');
 
 //settings
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname + '/views'));
+app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 
 //middlewares
@@ -28,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', routes);
 
 //file static
+app.use(express.static(path.join(__dirname, '/public')));
 
 //starting the server
 app.listen(app.get('port'), () => {
